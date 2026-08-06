@@ -3,7 +3,7 @@ export const SITE_TITLE = "Sujoy Das | Full-Stack Developer — Portfolio";
 export const SITE_DESCRIPTION = "Self-taught Full-Stack Developer specializing in React.js, Node.js, Express.js, and MongoDB. Building scalable, secure web applications with clean, efficient code.";
 export const SITE_KEYWORDS = "Sujoy Das, MERN Stack Developer, React.js Developer, Node.js Developer, Full-Stack Developer, Web Developer, Frontend Developer, Bangladesh";
 export const AUTHOR = "Sujoy Das";
-export const SITE_URL = "https://devsujoydas.com";
+export const SITE_URL = "https://devsujoydas.vercel.app";
 
 export const SOCIAL_LINKS = [
   { icon: "Github", href: "https://github.com/devsujoydas", label: "GitHub" },

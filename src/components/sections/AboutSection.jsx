@@ -6,7 +6,7 @@ const AboutSection = () => {
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="reveal relative">
           <div className="relative aspect-4/5 rounded-2xl overflow-hidden glass p-1">
-            <div className="w-full h-full rounded-xl bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-pink-500/20 flex items-center justify-center">
+            <div className="w-full h-full rounded-xl bg-linear-to-br from-indigo-500/20 via-purple-500/10 to-pink-500/20 flex items-center justify-center">
               <img
                 src="/sujoy.png"
                 className="h-full w-full rounded-xl"

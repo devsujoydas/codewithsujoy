@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/login
 
-Sitemap: https://devsujoydas.com/sitemap.xml
+Sitemap: https://devsujoydas.vercel.app/sitemap.xml
