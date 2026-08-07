@@ -1,5 +1,6 @@
 import SectionWrapper from "../layout/SectionWrapper";
 import { ArrowUpRight, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import blogsData from "../../data/blog";
 
 const BlogSection = () => {
@@ -16,9 +17,10 @@ const BlogSection = () => {
 
       <div className="grid md:grid-cols-3 gap-6">
         {blogsData.map((blog) => (
-          <article
+          <Link
             key={blog.id}
-            className="reveal glass rounded-2xl overflow-hidden card-hover group cursor-pointer relative"
+            to={`/blog/${blog.id}`}
+            className="reveal glass rounded-2xl overflow-hidden card-hover group relative block"
           >
             <div className="aspect-video relative overflow-hidden bg-card">
               {blog.image && (
@@ -51,7 +53,7 @@ const BlogSection = () => {
                 Read More <ArrowUpRight size={14} aria-hidden="true" />
               </span>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </SectionWrapper>

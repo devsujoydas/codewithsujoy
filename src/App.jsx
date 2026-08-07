@@ -30,6 +30,7 @@ const ThemeProvider = ({ children }) => {
 import Home from "./pages/Home"; // Normal import
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const BlogDetailsPage = lazy(() => import("./pages/BlogDetailsPage"));
 const AdminLayout = lazy(() => import("./components/layout/AdminLayout"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const ProjectsAdmin = lazy(() => import("./pages/admin/ProjectsAdmin"));
@@ -56,6 +57,7 @@ const App = () => {
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/blog/:id" element={<BlogDetailsPage />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
