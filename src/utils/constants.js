@@ -5,6 +5,13 @@ export const SITE_KEYWORDS = "Sujoy Das, MERN Stack Developer, React.js Develope
 export const AUTHOR = "Sujoy Das";
 export const SITE_URL = "https://devsujoydas.vercel.app";
 
+export const EMAIL_CONFIG = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  toEmail: import.meta.env.VITE_CONTACT_EMAIL,
+};
+
 export const SOCIAL_LINKS = [
   { icon: "Github", href: "https://github.com/devsujoydas", label: "GitHub" },
   { icon: "Linkedin", href: "https://www.linkedin.com/in/devsujoydas/", label: "LinkedIn" },

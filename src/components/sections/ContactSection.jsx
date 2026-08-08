@@ -1,14 +1,28 @@
 import { useState } from "react";
 import SectionWrapper from "../layout/SectionWrapper";
-import { Send, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { Send, Mail, MapPin, Phone, MessageCircle, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { sendContactEmail, saveContactMessage } from "../../utils/email";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Message sent! (demo)");
-    setForm({ name: "", email: "", message: "" });
+    setStatus("loading");
+    setError("");
+
+    try {
+      await sendContactEmail(form);
+      // await saveContactMessage(form);
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err) {
+      setStatus("error");
+      setError(err.message || "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -64,6 +78,7 @@ const ContactSection = () => {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full px-5 py-3.5 rounded-xl glass bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all duration-300 text-sm"
+              disabled={status === "loading"}
             />
           </div>
           <div>
@@ -76,6 +91,7 @@ const ContactSection = () => {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full px-5 py-3.5 rounded-xl glass bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all duration-300 text-sm"
+              disabled={status === "loading"}
             />
           </div>
           <div>
@@ -88,13 +104,39 @@ const ContactSection = () => {
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full px-5 py-3.5 rounded-xl glass bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all duration-300 resize-none text-sm"
+              disabled={status === "loading"}
             />
           </div>
+
+          {status === "success" && (
+            <div className="flex items-center gap-2 text-success text-sm">
+              <CheckCircle2 size={18} />
+              <span>Message sent successfully! I&apos;ll get back to you soon.</span>
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="flex items-center gap-2 text-destructive text-sm">
+              <AlertCircle size={18} />
+              <span>{error}</span>
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-primary-gradient text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            disabled={status === "loading"}
+            className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-primary-gradient text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            Send Message <Send size={16} aria-hidden="true" />
+            {status === "loading" ? (
+              <>
+                <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+                Sending...
+              </>
+            ) : (
+              <>
+                Send Message <Send size={16} aria-hidden="true" />
+              </>
+            )}
           </button>
         </form>
       </div>
