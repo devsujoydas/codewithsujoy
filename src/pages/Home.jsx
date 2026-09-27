@@ -25,9 +25,9 @@ const Home = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
-        <ExperienceSection />
+        {/* <ExperienceSection /> */}
         <EducationSection />
-        <CertificationsSection />
+        {/* <CertificationsSection /> */}
         <SkillsSection />
         <BlogSection />
         <ContactSection />
