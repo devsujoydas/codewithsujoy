@@ -8,8 +8,8 @@ const AboutSection = () => {
           <div className="relative aspect-4/5 rounded-2xl overflow-hidden glass p-1">
             <div className="w-full h-full rounded-xl bg-linear-to-br from-indigo-500/20 via-purple-500/10 to-pink-500/20 flex items-center justify-center">
               <img
-                src="/sujoy.png"
-                className="h-full w-full rounded-xl"
+                src="/Sujoy Das.png"
+                className="h-full w-full object-cover rounded-xl"
                 alt="Sujoy Das - MERN Stack Developer portrait"
                 loading="lazy"
               />
